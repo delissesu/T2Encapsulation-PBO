@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Tugas2Encapsulation
 {
@@ -14,7 +14,7 @@ namespace Tugas2Encapsulation
             string id = Validasi.ValidasiID();
             double inputGajiPokok = Validasi.ValidasiGajiPokok();
 
-            Karyawan karyawan;
+            Karyawan karyawan = null; 
 
             switch (inputKaryawan)
             {
@@ -27,8 +27,6 @@ namespace Tugas2Encapsulation
                 case "3":
                     karyawan = new KaryawanMagang(nama, id, inputGajiPokok);
                     break;
-                default:
-                    throw new InvalidOperationException("Pilihan karyawan tidak valid");
             }
 
             double gajiAkhir = karyawan.HitungGaji();
@@ -82,7 +80,7 @@ class KaryawanTetap : Karyawan
 
     public override double HitungGaji()
     {
-        return GajiPokok - BonusTetap;
+        return GajiPokok + BonusTetap;
     }
 }
 
@@ -95,7 +93,7 @@ class KaryawanKontrak : Karyawan
 
     public override double HitungGaji()
     {
-        return GajiPokok + PotonganKontrak;
+        return GajiPokok - PotonganKontrak;
     }
 }
 
